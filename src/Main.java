@@ -6,17 +6,16 @@ public class Main {
     public static void main(String[] args) {
 
         //Erweiterung des Arrays:
-        Scanner scanner = new Scanner(System.in);                   //Variable für den Scanner anlegen
+        Scanner scanner = new Scanner(System.in);                    //Variable für den Scanner anlegen
         boolean hasQ = scanner.hasNext("q");                 //Methode, schaut nach, was im Scanner drinsteht
 
         int[] numbers = new int[0];                                 //leeres Array erstellen
 
         while (!scanner.hasNext("q")) {                      //solange nicht q eingegeben wird
             int number = scanner.nextInt();                       //Eingabe speichern und in number speichern
-            System.out.println("you entered" + number);
+            System.out.println("you entered " + number);
 
             int[] newArray = new int[numbers.length + 1];           //neues Array mit 1 größer als vorher anlegen; Array immer rum 1 erweitern
-
 
             for (int i = 0; i < numbers.length; i++) {              //über alte Array drüber gehen, und dazu schreiben, was vorher dringestanden ist
                 newArray[i] = numbers[i];                           //an jede Stelle im neuen Array kommt die Zahl rein die im alten Array an der gleichen Stelle gespeichert ist
@@ -28,15 +27,34 @@ public class Main {
             System.out.println(Arrays.toString(newArray));
         }
 
-        //Speichert die Zahlen des Arrays als Liste
-        int max = Collections.max(Arrays.asList(numbers[numbers.length - 1]));
+        //Maximum im Array suchen und ausgeben:
+        int max;
+        int index;
 
+        index = 0;
+        max = numbers[index];
 
-        System.out.println("Das Maximum ist:");
-        System.out.println(max);
+        for (int i = 0; i < numbers.length; i++) {
+
+            if (numbers[i] > max) {
+                max = numbers[i];
+                index = i;
+
+            }
+        }
+        System.out.println("Das Maximum ist " + max);
 
     }
 }
+
+
+/*      //Maximum vom Array ausgeben mit Hilfe einer vordefinierten klasse:
+        //Speichert die Zahlen des Arrays als Liste
+        int max = Collections.max(Arrays.asList(numbers[numbers.length - 1]));
+
+        System.out.println("Das Maximum ist:");
+        System.out.println(max);
+ */
 
 
 //'q' Array das dynamisch wächst - zahlenweise einlesen
